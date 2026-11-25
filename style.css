@@ -1,3 +1,4 @@
+
 /* Basic page styling */
 body {
     font-family: Arial, sans-serif;
@@ -16,6 +17,11 @@ header {
 
 header h1 {
     margin-bottom: 10px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 15px;
 }
 
 /* Main content */
@@ -43,7 +49,12 @@ section {
     border-radius: 6px;
 }
 
-/* Form */
+/* Add Expense section */
+#add-expense {
+    background-color: #fff8e1;
+}
+
+/* Form styling */
 form {
     display: flex;
     flex-direction: column;
@@ -57,8 +68,103 @@ button {
     font-size: 16px;
 }
 
+/* Direct child selector */
+form > input,
+form > select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Negation pseudo-class */
+input:not([type="submit"]) {
+    background-color: #fff;
+}
+
+/* Focus pseudo-class */
+input:focus,
+select:focus {
+    outline: 2px solid #4caf50;
+    border-color: #4caf50;
+}
+
+/* Button styling */
 button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+/* Your Expenses section */
+#your-expenses {
+    background-color: #e8f5e9;
+}
+
+/* Expense table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+/* Colored table header */
+thead {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Descendant selector */
+.expenses-list td {
+    font-size: 15px;
+}
+
+/* Position pseudo-class */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* First row selector */
+tr:first-child {
+    font-weight: bold;
+}
+
+/* Table hover effect */
+tbody tr:hover {
+    background-color: #dcedc8;
+}
+
+/* Instructions section */
+.instructions {
+    background-color: #fffde7;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Video section */
+.video-section {
+    text-align: center;
+}
+
+iframe {
+    max-width: 100%;
+    border: none;
+    border-radius: 8px;
 }
 
 /* Footer */
@@ -67,12 +173,26 @@ footer {
     padding: 20px;
     background-color: white;
 }
-/* Add Expense section */
-#add-expense {
-    background-color: #fff8e1;
+/* Improved Budget Overview layout */
+.budget-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-/* Your Expenses section */
-#your-expenses {
-    background-color: #e8f5e9;
+.budget-section h2 {
+    grid-column: 1 / -1;
+}
+
+.budget-card {
+    width: auto;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 700px) {
+    .budget-section {
+        grid-template-columns: 1fr;
+    }
 }
