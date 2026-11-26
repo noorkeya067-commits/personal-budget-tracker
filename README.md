@@ -1,85 +1,63 @@
-# Personal Budget & Expense Tracker
+# SpendWise Dashboard
 
-## Project Description
+## Project Overview
 
-The Personal Budget & Expense Tracker is a simple, user-friendly website designed to help users organize and monitor their expenses.
+SpendWise is a personal finance dashboard designed to help users visualize their monthly budget, expenses, savings, and spending categories.
 
-This project was developed using HTML5 and CSS3. In Week 3, the application was improved with a professional visual identity, consistent colors, custom typography, and enhanced styling.
+This project focuses on building a clean, modern, and responsive dashboard using HTML5 and CSS3.
 
 ## Features
 
-### 1. Budget Overview
-Displays three budget cards:
-- Monthly Budget
-- Total Expenses
-- Remaining Balance
+### 1. Dashboard Layout
+- Sidebar navigation menu.
+- Dashboard header with welcome message.
+- Financial summary section.
+- Six expense category cards.
 
-### 2. Add Expense Form
-Contains:
-- Expense Name input
-- Amount input
-- Category dropdown with five options:
-  - Food
-  - Transport
-  - Rent
-  - Entertainment
-  - Other
-- Add Expense button
+### 2. Financial Summary
+The dashboard displays:
+- Monthly Budget: KSh 80,000
+- Total Expenses: KSh 52,500
+- Remaining Balance: KSh 27,500
 
-### 3. Expense Table
-Displays sample expense records using an HTML table with four columns:
-- Name
-- Amount
-- Category
-- Date
+### 3. Expense Categories
+The dashboard includes six categories:
+- Food
+- Transport
+- Rent
+- Entertainment
+- Savings
+- Utilities
 
-The table includes borders, styled headers, alternating row colors, and hover effects.
+### 4. CSS Grid and Flexbox
+- CSS Grid controls the overall dashboard layout and expense card arrangement.
+- Flexbox organizes the sidebar, navigation, header, summary cards, and category card contents.
 
-### 4. Multimedia Content
-- A budget tracker logo using the HTML image element.
-- An embedded YouTube budgeting tips video using an iframe.
+### 5. Theme and Styling
+CSS custom properties defined in `:root` manage the application's colors:
+- Brand color
+- Accent color
+- Background and surface colors
+- Primary and secondary text colors
 
-### 5. Interactive Elements
-- A collapsible instructions section using HTML details and summary elements.
-- Table row hover effects.
-- Button hover effects.
-- Form input focus styling.
+### 6. Responsive Design
+A media query adapts the dashboard into a single-column layout on screens narrower than 768px.
 
-### 6. Visual Identity and CSS Styling (Week 3)
+### 7. Micro-interactions
+Expense cards include hover and keyboard-focus animations using CSS transforms and box shadows. Animations last 200ms.
 
-The application uses a consistent and professional color palette:
-
-- Navy Blue (`#142D4E`) for headings and table headers.
-- Teal (`#0D9488`) for buttons and important interface elements.
-- Light Grey (`#F1F5F9`) for the page background.
-- White (`#FFFFFF`) for content cards.
-- Light Teal (`#F0FDFA`) for alternating table rows and budget cards.
-
-**Typography:**
-- Poppins for headings.
-- Roboto for body text, labels, forms, and table content.
-
-**CSS Box Model:**
-- Margin for separating page sections.
-- Padding for spacing inside cards and form elements.
-- Borders for defining sections and table cells.
-- Border-radius for rounded corners.
-- Box shadows for subtle visual depth.
-
-**Responsive Design:**
-- CSS Grid for the Budget Overview cards.
-- A media query for smaller screens.
+### 8. Dark Theme
+The dashboard supports the user's operating system color preference through `prefers-color-scheme: dark`.
 
 ## Technologies Used
-
 - HTML5
 - CSS3
-- Google Fonts
-- Visual Studio Code
-- Google Chrome
-- Git and GitHub
+- CSS Grid
+- Flexbox
+- CSS Custom Properties
+- Media Queries
 
-## Project Structure
+## Project Files
 
 ```text
 personal-budget-tracker/
@@ -89,21 +67,13 @@ personal-budget-tracker/
 └── README.md
 ```
 
-## How to Run the Project
+## How to Run
+1. Clone or download this repository.
+2. Open the project folder.
+3. Open `index.html` in a web browser.
 
-1. Clone or download the project repository.
-2. Open the project folder in Visual Studio Code.
-3. Open `index.html` using Live Server or a web browser.
-4. View the budget overview, expense form, expense table, and other page sections.
+## Project Purpose
 
-## Note
+The purpose of this project is to demonstrate modern CSS layout techniques and responsive dashboard design.
 
-This is currently a static website. The Add Expense button is not yet connected to JavaScript functionality. Dynamic expense management will be introduced in a later project phase.
-
-## Author
-
-Personal Budget & Expense Tracker - Week 3 Assignment
-
-## Copyright
-
-© 2026 Personal Budget & Expense Tracker.
+**Note:** This is a static dashboard. JavaScript functionality is not included in this week's requirements.
