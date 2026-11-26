@@ -3,11 +3,18 @@
 // SpendWise - Interactive Budget Tracker
 // ==========================================
 
-// 1. Application data
-let monthlyBudget = 0;
-let expenses = [];
+// 1. Application data - Load saved information
+let monthlyBudget = Number(localStorage.getItem("monthlyBudget")) || 0;
 
-// 2. Select HTML elements
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+// 2. Save information in the browser
+function saveData() {
+    localStorage.setItem("monthlyBudget", monthlyBudget);
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+// 3. Select HTML elements
 const budgetForm = document.getElementById("budget-form");
 const budgetInput = document.getElementById("budget-amount");
 
@@ -24,7 +31,7 @@ const expenseList = document.getElementById("expense-list");
 const feedbackMessage = document.getElementById("feedback-message");
 const categorySummary = document.getElementById("category-summary");
 
-// 3. Format money in Kenyan Shillings
+// 4. Format money in Kenyan Shillings
 function formatMoney(amount) {
     return "KSh " + amount.toLocaleString("en-KE", {
         minimumFractionDigits: 2,
@@ -32,7 +39,7 @@ function formatMoney(amount) {
     });
 }
 
-// 4. Calculate total expenses using a loop
+// 5. Calculate total expenses using a loop
 function calculateTotalExpenses() {
     let total = 0;
 
@@ -43,7 +50,7 @@ function calculateTotalExpenses() {
     return total;
 }
 
-// 5. Update dashboard information
+// 6. Update dashboard information
 function updateDashboard() {
     const totalExpenses = calculateTotalExpenses();
     const remainingBalance = monthlyBudget - totalExpenses;
@@ -64,7 +71,7 @@ function updateDashboard() {
     }
 }
 
-// 6. Display expenses using DOM manipulation
+// 7. Display expenses using DOM manipulation
 function displayExpenses() {
     expenseList.innerHTML = "";
 
@@ -100,6 +107,7 @@ function displayExpenses() {
 
         deleteButton.addEventListener("click", function() {
             expenses.splice(i, 1);
+            saveData();
             displayExpenses();
             updateDashboard();
             displayCategories();
@@ -116,7 +124,7 @@ function displayExpenses() {
     }
 }
 
-// 7. Display category totals
+// 8. Display category totals
 function displayCategories() {
     categorySummary.innerHTML = "";
 
@@ -154,7 +162,7 @@ function displayCategories() {
     }
 }
 
-// 8. Handle monthly budget form submission
+// 9. Handle monthly budget form submission
 budgetForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -166,13 +174,14 @@ budgetForm.addEventListener("submit", function(event) {
     }
 
     monthlyBudget = newBudget;
+    saveData();
 
     budgetForm.reset();
 
     updateDashboard();
 });
 
-// 9. Handle expense form submission
+// 10. Handle expense form submission
 expenseForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -203,6 +212,8 @@ expenseForm.addEventListener("submit", function(event) {
         category: category
     });
 
+    saveData();
+
     // Update webpage
     expenseForm.reset();
 
@@ -211,8 +222,7 @@ expenseForm.addEventListener("submit", function(event) {
     displayCategories();
 });
 
-// 10. Initial dashboard display
+// 11. Initial dashboard display
 updateDashboard();
 displayExpenses();
 displayCategories();
-
