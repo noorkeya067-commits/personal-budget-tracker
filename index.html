@@ -17,10 +17,9 @@
 
             <nav class="navigation">
                 <a href="#" class="nav-link active">Dashboard</a>
-                <a href="#" class="nav-link">Transactions</a>
-                <a href="#" class="nav-link">Budgets</a>
-                <a href="#" class="nav-link">Reports</a>
-                <a href="#" class="nav-link">Settings</a>
+                <a href="#transactions" class="nav-link">Transactions</a>
+                <a href="#budgets" class="nav-link">Budgets</a>
+                <a href="#categories" class="nav-link">Reports</a>
             </nav>
         </aside>
 
@@ -31,7 +30,7 @@
             <header class="header">
                 <div>
                     <h1>Dashboard</h1>
-                    <p>Welcome back! Here's your financial overview.</p>
+                    <p>Welcome to SpendWise! Manage your finances.</p>
                 </div>
 
                 <div class="profile">
@@ -40,71 +39,117 @@
                 </div>
             </header>
 
-            <!-- Financial Summary -->
-            <section class="summary">
+            <!-- Monthly Budget Form -->
+            <section class="summary" id="budgets">
                 <div class="summary-card">
                     <h3>Monthly Budget</h3>
-                    <p>KSh 80,000</p>
+                    <p id="monthly-budget">KSh 0.00</p>
                 </div>
 
                 <div class="summary-card">
                     <h3>Total Expenses</h3>
-                    <p>KSh 52,500</p>
+                    <p id="total-expenses">KSh 0.00</p>
                 </div>
 
                 <div class="summary-card">
                     <h3>Remaining Balance</h3>
-                    <p>KSh 27,500</p>
+                    <p id="remaining-balance">KSh 0.00</p>
                 </div>
             </section>
 
-            <!-- Expense Categories -->
-            <section class="categories">
+            <section class="budget-section">
+                <h2>Set Monthly Budget</h2>
+
+                <form id="budget-form">
+                    <label for="budget-amount">Monthly Budget (KSh)</label>
+                    <input
+                        type="number"
+                        id="budget-amount"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Enter your monthly budget"
+                        required
+                    >
+                    <button type="submit">Set Budget</button>
+                </form>
+            </section>
+
+            <!-- Add Expense Form -->
+            <section class="expense-section">
+                <h2>Add New Expense</h2>
+
+                <form id="expense-form">
+
+                    <label for="expense-name">Expense Name</label>
+                    <input
+                        type="text"
+                        id="expense-name"
+                        placeholder="Enter expense name"
+                        required
+                    >
+
+                    <label for="expense-amount">Amount (KSh)</label>
+                    <input
+                        type="number"
+                        id="expense-amount"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="Enter expense amount"
+                        required
+                    >
+
+                    <label for="expense-category">Category</label>
+                    <select id="expense-category" required>
+                        <option value="">Select category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <button type="submit">Add Expense</button>
+                </form>
+
+                <p id="feedback-message" role="status" aria-live="polite"></p>
+            </section>
+
+            <!-- Expense Records -->
+            <section id="transactions">
+                <h2>Your Expenses</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expense Name</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expense-list">
+                        <tr>
+                            <td colspan="4">No expenses yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Dynamic Expense Categories -->
+            <section class="categories" id="categories">
                 <h2>Expense Categories</h2>
-
-                <div class="card-grid">
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Food</h3>
-                        <p>Groceries and dining</p>
-                        <strong>KSh 12,000</strong>
-                    </article>
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Transport</h3>
-                        <p>Travel and commuting</p>
-                        <strong>KSh 5,500</strong>
-                    </article>
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Rent</h3>
-                        <p>Monthly accommodation</p>
-                        <strong>KSh 20,000</strong>
-                    </article>
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Entertainment</h3>
-                        <p>Movies and leisure</p>
-                        <strong>KSh 4,000</strong>
-                    </article>
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Savings</h3>
-                        <p>Monthly savings</p>
-                        <strong>KSh 7,000</strong>
-                    </article>
-
-                    <article class="category-card" tabindex="0">
-                        <h3>Utilities</h3>
-                        <p>Electricity and water</p>
-                        <strong>KSh 4,000</strong>
-                    </article>
-
+                <div class="card-grid" id="category-summary">
+                    <p>No expense categories yet.</p>
                 </div>
             </section>
 
         </main>
     </div>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
