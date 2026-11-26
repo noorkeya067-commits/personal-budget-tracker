@@ -5,49 +5,88 @@
 
 // 1. Store application data
 let monthlyBudget = 0;
-let expenseName = "";
-let expenseAmount = 0;
+let expenseNames = [];
+let expenseAmounts = [];
 let totalExpenses = 0;
 let remainingBalance = 0;
 
-// 2. Collect user input
-monthlyBudget = Number(prompt("Welcome to SpendWise!\nEnter your monthly budget:"));
+// 2. Collect monthly budget
+monthlyBudget = Number(
+    prompt("Welcome to SpendWise!\nEnter your monthly budget:")
+);
 
-expenseName = prompt("Enter your expense name:");
+// 3. Collect multiple expenses using a loop
+if (Number.isFinite(monthlyBudget) && monthlyBudget > 0) {
 
-expenseAmount = Number(prompt("Enter the expense amount:"));
+    while (true) {
 
-// 3. Calculate total expenses
-function calculateTotalExpenses(amount) {
-    return amount;
-}
+        let expenseName = prompt(
+            "Enter expense name (or type 'done' to finish):"
+        );
 
-// 4. Calculate remaining balance
-function calculateRemainingBalance(budget, expenses) {
-    return budget - expenses;
-}
+        if (expenseName === null || expenseName.toLowerCase() === "done") {
+            break;
+        }
 
-// 5. Display budget results
-function displayBudgetSummary() {
-    console.log("===== SPENDWISE BUDGET SUMMARY =====");
-    console.log("Monthly Budget: KSh " + monthlyBudget);
-    console.log("Expense Name: " + expenseName);
-    console.log("Expense Amount: KSh " + expenseAmount);
+        expenseName = expenseName.trim();
 
-    console.log("Total Expenses: KSh " + totalExpenses);
-    console.log("Remaining Balance: KSh " + remainingBalance);
-    console.log("====================================");
-}
+        if (expenseName === "") {
+            alert("Please enter a valid expense name.");
+            continue;
+        }
 
-// 6. Process the budgeting information
-if (
-    monthlyBudget > 0 &&
-    expenseName !== null &&
-    expenseName.trim() !== "" &&
-    Number.isFinite(expenseAmount) &&
-    expenseAmount >= 0
-) {
-    totalExpenses = calculateTotalExpenses(expenseAmount);
+        let expenseAmount = Number(
+            prompt("Enter the amount for " + expenseName + ":")
+        );
+
+        if (
+            !Number.isFinite(expenseAmount) ||
+            expenseAmount <= 0
+        ) {
+            alert("Please enter a valid expense amount greater than zero.");
+            continue;
+        }
+
+        expenseNames.push(expenseName);
+        expenseAmounts.push(expenseAmount);
+    }
+
+    // 4. Calculate total expenses from an array
+    function calculateTotalExpenses(amounts) {
+        return amounts.reduce(function(total, amount) {
+            return total + amount;
+        }, 0);
+    }
+
+    // 5. Calculate remaining balance
+    function calculateRemainingBalance(budget, expenses) {
+        return budget - expenses;
+    }
+
+    // 6. Display budget summary
+    function displayBudgetSummary() {
+
+        console.log("===== SPENDWISE BUDGET SUMMARY =====");
+
+        console.log("Monthly Budget: KSh " + monthlyBudget);
+
+        console.log("----- EXPENSE DETAILS -----");
+
+        for (let i = 0; i < expenseNames.length; i++) {
+            console.log(
+                expenseNames[i] + ": KSh " + expenseAmounts[i]
+            );
+        }
+
+        console.log("Total Expenses: KSh " + totalExpenses);
+
+        console.log("Remaining Balance: KSh " + remainingBalance);
+
+        console.log("====================================");
+    }
+
+    // 7. Process budgeting information
+    totalExpenses = calculateTotalExpenses(expenseAmounts);
 
     remainingBalance = calculateRemainingBalance(
         monthlyBudget,
@@ -57,5 +96,5 @@ if (
     displayBudgetSummary();
 
 } else {
-    console.log("Invalid input. Please refresh and enter valid information.");
+    console.log("Invalid monthly budget. Please refresh and try again.");
 }
