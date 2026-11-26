@@ -1,79 +1,56 @@
-# SpendWise Dashboard
+# SpendWise – Personal Budget & Expense Tracker
 
-## Project Overview
+## Project Description
+SpendWise is a personal budget and expense tracker designed to help users manage their monthly budgets and monitor their spending.
 
-SpendWise is a personal finance dashboard designed to help users visualize their monthly budget, expenses, savings, and spending categories.
+The application uses HTML, CSS, and JavaScript to collect budgeting information, perform calculations, and display results in the browser console.
 
-This project focuses on building a clean, modern, and responsive dashboard using HTML5 and CSS3.
+## JavaScript Concepts Implemented
 
-## Features
+### 1. Variables
+Variables are used to store important budgeting information, including:
+- Monthly budget
+- Expense name
+- Expense amount
+- Total expenses
+- Remaining balance
 
-### 1. Dashboard Layout
-- Sidebar navigation menu.
-- Dashboard header with welcome message.
-- Financial summary section.
-- Six expense category cards.
+### 2. Data Types
+The project uses:
+- Strings to store expense names.
+- Numbers to store budgets and expense amounts.
 
-### 2. Financial Summary
-The dashboard displays:
-- Monthly Budget: KSh 80,000
-- Total Expenses: KSh 52,500
-- Remaining Balance: KSh 27,500
+### 3. User Input
+The JavaScript `prompt()` function collects the monthly budget, expense name, and expense amount from the user.
 
-### 3. Expense Categories
-The dashboard includes six categories:
-- Food
-- Transport
-- Rent
-- Entertainment
-- Savings
-- Utilities
+The `Number()` function converts numerical input into numbers for calculations.
 
-### 4. CSS Grid and Flexbox
-- CSS Grid controls the overall dashboard layout and expense card arrangement.
-- Flexbox organizes the sidebar, navigation, header, summary cards, and category card contents.
+### 4. Budget Calculations
+SpendWise calculates the total expenses and remaining balance.
 
-### 5. Theme and Styling
-CSS custom properties defined in `:root` manage the application's colors:
-- Brand color
-- Accent color
-- Background and surface colors
-- Primary and secondary text colors
+Remaining Balance = Monthly Budget - Total Expenses.
 
-### 6. Responsive Design
-A media query adapts the dashboard into a single-column layout on screens narrower than 768px.
+### 5. Reusable Functions
+Functions organize the application logic and make calculations reusable.
 
-### 7. Micro-interactions
-Expense cards include hover and keyboard-focus animations using CSS transforms and box shadows. Animations last 200ms.
+The project includes:
+- `calculateTotalExpenses()` – calculates total expenses.
+- `calculateRemainingBalance()` – calculates the remaining balance.
+- `displayBudgetSummary()` – displays the budget information.
 
-### 8. Dark Theme
-The dashboard supports the user's operating system color preference through `prefers-color-scheme: dark`.
+### 6. Displaying Results
+The `console.log()` function displays clearly labeled budgeting information in the browser developer console.
+
+## How to Run the Project
+1. Download or clone the project repository.
+2. Open `index.html` in a web browser.
+3. Enter your monthly budget and expense information when prompted.
+4. Open the browser developer console to view the results.
 
 ## Technologies Used
 - HTML5
 - CSS3
-- CSS Grid
-- Flexbox
-- CSS Custom Properties
-- Media Queries
+- JavaScript
 
-## Project Files
-
-```text
-personal-budget-tracker/
-│
-├── index.html
-├── style.css
-└── README.md
-```
-
-## How to Run
-1. Clone or download this repository.
-2. Open the project folder.
-3. Open `index.html` in a web browser.
-
-## Project Purpose
-
-The purpose of this project is to demonstrate modern CSS layout techniques and responsive dashboard design.
-
-**Note:** This is a static dashboard. JavaScript functionality is not included in this week's requirements.
+## Project Status
+Week 6 – JavaScript Foundation completed.
